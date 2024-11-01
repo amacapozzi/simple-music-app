@@ -4,6 +4,7 @@ import { SongCard } from "@/components/SongCard";
 
 const songsData = [
   {
+    id: "A",
     songImage:
       "https://media.senscritique.com/media/000004795056/source_big/let_it_be.jpg",
     songName: "Let It Be",
@@ -11,6 +12,7 @@ const songsData = [
     calification: 8.5,
   },
   {
+    id: "AB",
     songImage:
       "https://th.bing.com/th/id/OIP.R6pKAIcyAC1UfBeM74OSoAHaFj?rs=1&pid=ImgDetMain",
     songName: "Honestiy",
@@ -18,6 +20,7 @@ const songsData = [
     calification: 8.5,
   },
   {
+    id: "ABC",
     songImage:
       "https://th.bing.com/th/id/OIP.42IIQVGqaUvKD4YAY2jbGAHaHa?rs=1&pid=ImgDetMain",
     songName: "Hey jude",
@@ -36,6 +39,7 @@ export default function Home() {
       <div className="grid grid-cols-1 gap-5 my-4">
         {songsData.map((song) => (
           <SongCard
+            id={song.id}
             key={song.songName}
             songImage={song.songImage}
             songStars={song.songStars}

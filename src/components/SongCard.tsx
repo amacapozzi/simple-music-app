@@ -1,8 +1,11 @@
-import { PlayIcon, Star } from "lucide-react";
+"use client";
+import { Star } from "lucide-react";
 import { Card } from "./ui/card";
+import { AudioPlayer } from "./AudioPlayer";
 
 interface SongProps {
   songImage: string;
+  id: string;
   songName: string;
   songStars: number;
   calification: number;
@@ -11,6 +14,7 @@ interface SongProps {
 export const SongCard: React.FC<SongProps> = ({
   songImage,
   songName,
+  id,
   songStars,
   calification,
 }) => {
@@ -27,19 +31,19 @@ export const SongCard: React.FC<SongProps> = ({
         <h3 className="font-medium">{songName}</h3>
         <p className="text-sm text-muted-foreground">Some song description</p>
         <div className="flex items-center gap-0.5">
-          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+          {Array.from({ length: songStars }).map((i, star) => (
+            <Star
+              key={star}
+              className="h-4 w-4 fill-yellow-400 text-yellow-400"
+            />
+          ))}
 
           <span className="ml-1 text-sm text-muted-foreground">
             {calification}
           </span>
         </div>
       </div>
-      <button className="inline-flex itemns-center justify-center px-2 p-2 rounded-full bg-violet-700/20">
-        <PlayIcon className="h-6 w-6  text-purple-500" />
-      </button>
+      <AudioPlayer songId={id} />
     </Card>
   );
 };
